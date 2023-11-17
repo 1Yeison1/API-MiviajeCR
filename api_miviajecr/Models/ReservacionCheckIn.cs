@@ -12,6 +12,5 @@ namespace api_miviajecr.Models
         public bool UsuarioLlegoAlAlojamiento { get; set; }
         public DateTime FechaCreacion { get; set; }
 
-        public virtual Reservacione IdReservacionNavigation { get; set; }
     }
 }

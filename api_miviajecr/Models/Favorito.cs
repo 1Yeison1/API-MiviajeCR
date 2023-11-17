@@ -13,7 +13,6 @@ namespace api_miviajecr.Models
         public bool EstaActivo { get; set; }
         public DateTime FechaCreacion { get; set; }
 
-        public virtual Inmueble IdInmuebleNavigation { get; set; }
-        public virtual Usuario IdUsuarioNavigation { get; set; }
+     
     }
 }

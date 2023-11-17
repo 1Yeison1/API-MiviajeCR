@@ -15,8 +15,6 @@ namespace api_miviajecr.Models
         public string Solucion { get; set; }
         public DateTime FechaCreacion { get; set; }
 
-        public virtual Reservacione IdReservacionNavigation { get; set; }
-        public virtual StatusDenuncium IdStatusDenunciaNavigation { get; set; }
-        public virtual Usuario IdUsuarioNavigation { get; set; }
+       
     }
 }

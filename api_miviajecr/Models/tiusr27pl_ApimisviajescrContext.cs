@@ -81,17 +81,6 @@ namespace api_miviajecr.Models
 
                 entity.Property(e => e.FechaCreacion).HasColumnType("datetime");
 
-                entity.HasOne(d => d.IdAmenidadNavigation)
-                    .WithMany(p => p.AmenidadesPorInmuebles)
-                    .HasForeignKey(d => d.IdAmenidad)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Amenidade__IdAme__5629CD9C");
-
-                entity.HasOne(d => d.IdInmuebleNavigation)
-                    .WithMany(p => p.AmenidadesPorInmuebles)
-                    .HasForeignKey(d => d.IdInmueble)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Amenidade__IdInm__571DF1D5");
             });
 
             modelBuilder.Entity<CalificacionReservacione>(entity =>
@@ -107,17 +96,7 @@ namespace api_miviajecr.Models
 
                 entity.Property(e => e.PromedioCalificacion).HasColumnType("decimal(9, 2)");
 
-                entity.HasOne(d => d.IdReservacionNavigation)
-                    .WithMany(p => p.CalificacionReservaciones)
-                    .HasForeignKey(d => d.IdReservacion)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Calificac__IdRes__73BA3083");
-
-                entity.HasOne(d => d.IdUsuarioNavigation)
-                    .WithMany(p => p.CalificacionReservaciones)
-                    .HasForeignKey(d => d.IdUsuario)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Calificac__IdUsu__74AE54BC");
+              
             });
 
             modelBuilder.Entity<CalificacionUsuario>(entity =>
@@ -133,17 +112,7 @@ namespace api_miviajecr.Models
 
                 entity.Property(e => e.PromedioCalificacion).HasColumnType("decimal(9, 2)");
 
-                entity.HasOne(d => d.IdUsuarioCalificadoNavigation)
-                    .WithMany(p => p.CalificacionUsuarioIdUsuarioCalificadoNavigations)
-                    .HasForeignKey(d => d.IdUsuarioCalificado)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Calificac__IdUsu__778AC167");
-
-                entity.HasOne(d => d.IdUsuarioCalificadorNavigation)
-                    .WithMany(p => p.CalificacionUsuarioIdUsuarioCalificadorNavigations)
-                    .HasForeignKey(d => d.IdUsuarioCalificador)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Calificac__IdUsu__787EE5A0");
+             
             });
 
             modelBuilder.Entity<CaracteristicasInmueble>(entity =>
@@ -155,11 +124,7 @@ namespace api_miviajecr.Models
                     .HasMaxLength(1000)
                     .IsUnicode(false);
 
-                entity.HasOne(d => d.IdInmuebleNavigation)
-                    .WithMany(p => p.CaracteristicasInmuebles)
-                    .HasForeignKey(d => d.IdInmueble)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Caracteri__IdInm__4AB81AF0");
+              
             });
 
             modelBuilder.Entity<CuentasBancaria>(entity =>
@@ -180,7 +145,7 @@ namespace api_miviajecr.Models
                 entity.Property(e => e.SaldoDisponible).HasColumnType("money");
 
                 entity.HasOne(d => d.IdUsuarioNavigation)
-                    .WithMany(p => p.CuentasBancaria)
+                    .WithMany()
                     .HasForeignKey(d => d.IdUsuario)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__CuentasBa__IdUsu__06CD04F7");
@@ -203,23 +168,7 @@ namespace api_miviajecr.Models
                     .HasMaxLength(500)
                     .IsUnicode(false);
 
-                entity.HasOne(d => d.IdReservacionNavigation)
-                    .WithMany(p => p.Denuncia)
-                    .HasForeignKey(d => d.IdReservacion)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Denuncias__IdRes__7D439ABD");
-
-                entity.HasOne(d => d.IdStatusDenunciaNavigation)
-                    .WithMany(p => p.Denuncia)
-                    .HasForeignKey(d => d.IdStatusDenuncia)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Denuncias__IdSta__7F2BE32F");
-
-                entity.HasOne(d => d.IdUsuarioNavigation)
-                    .WithMany(p => p.Denuncia)
-                    .HasForeignKey(d => d.IdUsuario)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Denuncias__IdUsu__7E37BEF6");
+               
             });
 
             modelBuilder.Entity<DisponibilidadInmueble>(entity =>
@@ -233,11 +182,7 @@ namespace api_miviajecr.Models
 
                 entity.Property(e => e.FechaInicio).HasColumnType("date");
 
-                entity.HasOne(d => d.IdInmuebleNavigation)
-                    .WithMany(p => p.DisponibilidadInmuebles)
-                    .HasForeignKey(d => d.IdInmueble)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Disponibi__IdInm__4D94879B");
+              
             });
 
             modelBuilder.Entity<Favorito>(entity =>
@@ -247,17 +192,7 @@ namespace api_miviajecr.Models
 
                 entity.Property(e => e.FechaCreacion).HasColumnType("datetime");
 
-                entity.HasOne(d => d.IdInmuebleNavigation)
-                    .WithMany(p => p.Favoritos)
-                    .HasForeignKey(d => d.IdInmueble)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Favoritos__IdInm__412EB0B6");
-
-                entity.HasOne(d => d.IdUsuarioNavigation)
-                    .WithMany(p => p.Favoritos)
-                    .HasForeignKey(d => d.IdUsuario)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Favoritos__IdUsu__4222D4EF");
+               
             });
 
             modelBuilder.Entity<HistoricoLugaresVisitado>(entity =>
@@ -267,17 +202,7 @@ namespace api_miviajecr.Models
 
                 entity.Property(e => e.FechaCreacion).HasColumnType("datetime");
 
-                entity.HasOne(d => d.IdReservacionNavigation)
-                    .WithMany(p => p.HistoricoLugaresVisitados)
-                    .HasForeignKey(d => d.IdReservacion)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Historico__IdRes__6FE99F9F");
-
-                entity.HasOne(d => d.IdUsuarioNavigation)
-                    .WithMany(p => p.HistoricoLugaresVisitados)
-                    .HasForeignKey(d => d.IdUsuario)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Historico__IdUsu__70DDC3D8");
+              
             });
 
             modelBuilder.Entity<ImagenesInmueble>(entity =>
@@ -293,11 +218,7 @@ namespace api_miviajecr.Models
 
                 entity.Property(e => e.FechaCreacion).HasColumnType("datetime");
 
-                entity.HasOne(d => d.IdInmuebleNavigation)
-                    .WithMany(p => p.ImagenesInmuebles)
-                    .HasForeignKey(d => d.IdInmueble)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__ImagenesI__IdInm__44FF419A");
+               
             });
 
             modelBuilder.Entity<Inmueble>(entity =>
@@ -321,17 +242,6 @@ namespace api_miviajecr.Models
                     .HasMaxLength(100)
                     .IsUnicode(false);
 
-                entity.HasOne(d => d.IdTipoInmuebleNavigation)
-                    .WithMany(p => p.Inmuebles)
-                    .HasForeignKey(d => d.IdTipoInmueble)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Inmuebles__IdTip__3E52440B");
-
-                entity.HasOne(d => d.IdUsuarioNavigation)
-                    .WithMany(p => p.Inmuebles)
-                    .HasForeignKey(d => d.IdUsuario)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Inmuebles__IdUsu__3D5E1FD2");
             });
 
             modelBuilder.Entity<Politica>(entity =>
@@ -355,17 +265,9 @@ namespace api_miviajecr.Models
 
                 entity.Property(e => e.FechaCreacion).HasColumnType("datetime");
 
-                entity.HasOne(d => d.IdInmuebleNavigation)
-                    .WithMany(p => p.PoliticasPorInmuebles)
-                    .HasForeignKey(d => d.IdInmueble)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Politicas__IdInm__5BE2A6F2");
+                
 
-                entity.HasOne(d => d.IdPoliticaNavigation)
-                    .WithMany(p => p.PoliticasPorInmuebles)
-                    .HasForeignKey(d => d.IdPolitica)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Politicas__IdPol__5AEE82B9");
+               
             });
 
             modelBuilder.Entity<ReservacionCheckIn>(entity =>
@@ -377,11 +279,7 @@ namespace api_miviajecr.Models
 
                 entity.Property(e => e.FechaCreacion).HasColumnType("datetime");
 
-                entity.HasOne(d => d.IdReservacionNavigation)
-                    .WithMany(p => p.ReservacionCheckIns)
-                    .HasForeignKey(d => d.IdReservacion)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Reservaci__IdRes__6A30C649");
+               
             });
 
             modelBuilder.Entity<ReservacionCheckOut>(entity =>
@@ -393,11 +291,7 @@ namespace api_miviajecr.Models
 
                 entity.Property(e => e.FechaCreacion).HasColumnType("datetime");
 
-                entity.HasOne(d => d.IdReservacionNavigation)
-                    .WithMany(p => p.ReservacionCheckOuts)
-                    .HasForeignKey(d => d.IdReservacion)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Reservaci__IdRes__6D0D32F4");
+              
             });
 
             modelBuilder.Entity<Reservacione>(entity =>
@@ -415,23 +309,8 @@ namespace api_miviajecr.Models
 
                 entity.Property(e => e.MontoTotal).HasColumnType("money");
 
-                entity.HasOne(d => d.IdInmuebleNavigation)
-                    .WithMany(p => p.Reservaciones)
-                    .HasForeignKey(d => d.IdInmueble)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Reservaci__IdInm__656C112C");
 
-                entity.HasOne(d => d.IdStatusReservacionNavigation)
-                    .WithMany(p => p.Reservaciones)
-                    .HasForeignKey(d => d.IdStatusReservacion)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Reservaci__IdSta__6754599E");
-
-                entity.HasOne(d => d.IdUsuarioNavigation)
-                    .WithMany(p => p.Reservaciones)
-                    .HasForeignKey(d => d.IdUsuario)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Reservaci__IdUsu__66603565");
+              
             });
 
             modelBuilder.Entity<Restriccione>(entity =>
@@ -455,17 +334,7 @@ namespace api_miviajecr.Models
 
                 entity.Property(e => e.FechaCreacion).HasColumnType("datetime");
 
-                entity.HasOne(d => d.IdInmuebleNavigation)
-                    .WithMany(p => p.RestriccionesPorInmuebles)
-                    .HasForeignKey(d => d.IdInmueble)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Restricci__IdInm__60A75C0F");
-
-                entity.HasOne(d => d.IdRestriccionNavigation)
-                    .WithMany(p => p.RestriccionesPorInmuebles)
-                    .HasForeignKey(d => d.IdRestriccion)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Restricci__IdRes__5FB337D6");
+                
             });
 
             modelBuilder.Entity<Servicio>(entity =>
@@ -489,17 +358,9 @@ namespace api_miviajecr.Models
 
                 entity.Property(e => e.FechaCreacion).HasColumnType("datetime");
 
-                entity.HasOne(d => d.IdInmueblesNavigation)
-                    .WithMany(p => p.ServiciosPorInmuebles)
-                    .HasForeignKey(d => d.IdInmuebles)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Servicios__IdInm__52593CB8");
+               
 
-                entity.HasOne(d => d.IdServicioNavigation)
-                    .WithMany(p => p.ServiciosPorInmuebles)
-                    .HasForeignKey(d => d.IdServicio)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Servicios__IdSer__5165187F");
+              
             });
 
             modelBuilder.Entity<StatusDenuncium>(entity =>
@@ -598,7 +459,7 @@ namespace api_miviajecr.Models
                     .HasConstraintName("FK__Transacci__IdCue__0D7A0286");
 
                 entity.HasOne(d => d.IdTipoTransaccionNavigation)
-                    .WithMany(p => p.Transacciones)
+                    .WithMany()
                     .HasForeignKey(d => d.IdTipoTransaccion)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__Transacci__IdTip__0B91BA14");
@@ -628,11 +489,7 @@ namespace api_miviajecr.Models
                     .HasMaxLength(500)
                     .IsUnicode(false);
 
-                entity.HasOne(d => d.IdInmuebleNavigation)
-                    .WithMany(p => p.UbicacionInmuebles)
-                    .HasForeignKey(d => d.IdInmueble)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Ubicacion__IdInm__47DBAE45");
+               
             });
 
             modelBuilder.Entity<Usuario>(entity =>
@@ -677,11 +534,7 @@ namespace api_miviajecr.Models
                     .HasMaxLength(10)
                     .IsUnicode(false);
 
-                entity.HasOne(d => d.IdTipoUsuarioNavigation)
-                    .WithMany(p => p.Usuarios)
-                    .HasForeignKey(d => d.IdTipoUsuario)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Usuarios__IdTipo__38996AB5");
+                
             });
 
             OnModelCreatingPartial(modelBuilder);
