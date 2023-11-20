@@ -6,8 +6,6 @@ using api_miviajecr.Services.ServicioAmenidades;
 using api_miviajecr.Services.ServicioPoliticas;
 using api_miviajecr.Services.ServicioRestricciones;
 using api_miviajecr.Services.ServiciosReservaciones;
-
-
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -23,6 +21,7 @@ using System.Threading.Tasks;
 using api_miviajecr.Services.ServicioDenuncias;
 using api_miviajecr.Services.ServicioHistoricoLugaresVisitado;
 using api_miviajecr.Services.ServicioFavoritos;
+
 
 namespace api_miviajecr
 {
@@ -69,6 +68,7 @@ namespace api_miviajecr
             services.AddScoped<IStatusDenunciaRepositorio, StatusDenunciaRepositorio>();
             services.AddScoped<IHistoricoLugaresVisitadoRepositorio, HistoricoLugaresVisitadoRepositorio>();
             services.AddScoped<IFavoritoRepositorio, FavoritoRepositorio>();
+            
 
 
             services.AddCors(o =>

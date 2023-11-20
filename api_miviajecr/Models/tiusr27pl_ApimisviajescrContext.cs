@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -8,6 +9,7 @@ namespace api_miviajecr.Models
 {
     public partial class tiusr27pl_ApimisviajescrContext : DbContext
     {
+
         public tiusr27pl_ApimisviajescrContext()
         {
         }
@@ -46,6 +48,11 @@ namespace api_miviajecr.Models
         public virtual DbSet<Transaccione> Transacciones { get; set; }
         public virtual DbSet<UbicacionInmueble> UbicacionInmuebles { get; set; }
         public virtual DbSet<Usuario> Usuarios { get; set; }
+        public virtual DbSet<InmueblesCustom> InmueblesCustom { get; set; }
+
+
+
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -55,6 +62,8 @@ namespace api_miviajecr.Models
                 optionsBuilder.UseSqlServer("Server=tiusr26pl.cuc-carrera-ti.ac.cr\\MSSQLSERVER2019;Database=tiusr27pl_Apimisviajescr;Persist Security Info=True;User ID=viajescr;Password=misviajescr;");
             }
         }
+
+    
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -542,4 +551,6 @@ namespace api_miviajecr.Models
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
     }
+
+
 }

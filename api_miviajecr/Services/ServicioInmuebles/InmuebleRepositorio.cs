@@ -1,5 +1,7 @@
 ﻿using api_miviajecr.Models;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -44,6 +46,38 @@ namespace api_miviajecr.Services.ServicioInmueble
             {
                 return -1;
             }
+        }
+
+        public async Task<List<InmueblesCustom>> ObtenerInmueblesFavoritos(int idUsuario)
+        {
+            return await _dbContext.InmueblesCustom
+               .FromSqlRaw<InmueblesCustom>("ObtenerDetallesInmuebleFavoritos {0}", idUsuario)
+               .ToListAsync();
+
+        }
+        public async Task<string> AgregarInmuebleAFavoritos(int idUsuario, int idInmueble)
+        {
+            string response = string.Empty;
+            try
+            {
+                string sql = @"exec [viajescr].[AgregarInmuebleFavorito] 
+                                @IdUsuario,                              
+                                @IdInmueble";
+
+                List<SqlParameter> parms = new List<SqlParameter>
+                {
+                    new SqlParameter { ParameterName = "@IdUsuario", Value = idUsuario },
+                    new SqlParameter { ParameterName = "@IdInmueble", Value = idInmueble }
+                };
+
+                _dbContext.Database.ExecuteSqlRaw(sql, parms.ToArray());
+                response = "Inmueble agregado a favoritos correctamente.";
+            }
+            catch (Exception e)
+            {
+                response = e.Message;
+            }
+            return response;
         }
     }
 }
