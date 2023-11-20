@@ -14,6 +14,5 @@ namespace api_miviajecr.Models
         public string Distrito { get; set; }
         public string UbicacionDetalles { get; set; }
 
-        public virtual Inmueble IdInmuebleNavigation { get; set; }
     }
 }

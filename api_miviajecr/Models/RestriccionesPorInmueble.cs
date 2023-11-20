@@ -13,7 +13,5 @@ namespace api_miviajecr.Models
         public DateTime FechaCreacion { get; set; }
         public int IdRestriccionesPorInmueble { get; set; }
 
-        public virtual Inmueble IdInmuebleNavigation { get; set; }
-        public virtual Restriccione IdRestriccionNavigation { get; set; }
     }
 }

@@ -14,7 +14,5 @@ namespace api_miviajecr.Models
         public string Comentarios { get; set; }
         public DateTime FechaCreacion { get; set; }
 
-        public virtual Reservacione IdReservacionNavigation { get; set; }
-        public virtual Usuario IdUsuarioNavigation { get; set; }
     }
 }
