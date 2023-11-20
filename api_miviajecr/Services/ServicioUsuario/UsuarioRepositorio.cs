@@ -1,5 +1,7 @@
 ﻿using api_miviajecr.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace api_miviajecr.Services.ServicioUsuario
@@ -60,5 +62,22 @@ namespace api_miviajecr.Services.ServicioUsuario
             }
             
         }
+
+        public async Task<List<Usuario>> ObtenerUsuarios()
+        {
+            try
+            {
+                var usuarios = await _dbContext.Usuarios.ToListAsync();
+                return usuarios;
+            }
+            catch (Exception ex)
+            {
+                // Loguea el error o realiza cualquier otra acción necesaria.
+                return null;
+            }
+        }
+
+
+
     }
 }

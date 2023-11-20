@@ -7,16 +7,10 @@ namespace api_miviajecr.Models
 {
     public partial class TipoUsuario
     {
-        public TipoUsuario()
-        {
-            Usuarios = new HashSet<Usuario>();
-        }
-
         public int IdTipoUsuario { get; set; }
         public string TipoUsuario1 { get; set; }
         public bool EstaActivo { get; set; }
         public DateTime FechaCreacion { get; set; }
 
-        public virtual ICollection<Usuario> Usuarios { get; set; }
     }
 }

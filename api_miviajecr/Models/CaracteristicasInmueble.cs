@@ -11,6 +11,6 @@ namespace api_miviajecr.Models
         public int IdInmueble { get; set; }
         public string Descripcion { get; set; }
 
-        public virtual Inmueble IdInmuebleNavigation { get; set; }
+       
     }
 }
